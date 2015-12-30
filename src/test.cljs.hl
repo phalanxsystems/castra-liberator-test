@@ -1,0 +1,17 @@
+(page "test.html"
+  (:require
+    [castra.core    :as c     :refer [mkremote]]))
+
+(defc state nil)
+(defc error nil)
+(defc loading nil)
+
+(def get-state  (mkremote 'server.api/get-state state error loading))
+(with-init!
+  (get-state))
+
+(cell= (.log js/console "[state]" (clj->js state)))
+  (html
+    (head)
+    (body
+      ))
